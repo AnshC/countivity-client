@@ -6,7 +6,7 @@ export default function Username(){
     const [InvalidUsr, setValidity] = useState(false)
 
     useEffect(()=>{
-        axios.get('/auth/check')
+        axios.get('/api/auth/check')
         .then((response)=>{
             if(response.data.loginState === false){
                 window.location.replace("/")
@@ -15,7 +15,7 @@ export default function Username(){
     }, [])
 
     function check_user(){
-        axios.get(`/auth/username/${Username}`)
+        axios.get(`/api/auth/username/${Username}`)
         .then((response)=>{
             if(response.data.userCreated === true){
                 setValidity(true)
