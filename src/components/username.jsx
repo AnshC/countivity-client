@@ -6,7 +6,7 @@ export default function Username(){
     const [InvalidUsr, setValidity] = useState(false)
 
     useEffect(()=>{
-        axios.get('/api/auth/check')
+        axios.get('https://countivityserver.herokuapp.com/auth/check')
         .then((response)=>{
             if(response.data.loginState === false){
                 window.location.replace("/")
@@ -15,7 +15,7 @@ export default function Username(){
     }, [])
 
     function check_user(){
-        axios.get(`/api/auth/username/${Username}`)
+        axios.get(`https://countivityserver.herokuapp.com/auth/username/${Username}`)
         .then((response)=>{
             if(response.data.userCreated === true){
                 setValidity(true)

@@ -12,7 +12,7 @@ export default function Home(){
     const [Loading, setLoading] = useState(false)
     function SignIN(){
         setLoading(true);
-        axios.get(`/api/signin/${UserEmail},${UserPassword}`)
+        axios.get(`https://countivityserver.herokuapp.com/signin/${UserEmail},${UserPassword}`)
         .then((response)=>{
             setLoading(false);
             if (response.data.loginState === true){
@@ -25,7 +25,7 @@ export default function Home(){
     }
     function SignUP(){
         setLoading(true);
-        axios.get(`/api/signup/${UserEmail},${UserPassword}`)
+        axios.get(`https://countivityserver.herokuapp.com/signup/${UserEmail},${UserPassword}`)
         .then((response)=>{
             console.log(response)
             window.location.replace("/auth/username")

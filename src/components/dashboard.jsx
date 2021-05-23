@@ -16,7 +16,7 @@ export default function Dashboard(){
     const [loading, setLoading] = useState(false)
     useEffect(()=>{
         setLoading(true)
-        axios.get('/api/auth/check')
+        axios.get('https://countivityserver.herokuapp.com/auth/check')
         .then((response)=>{
             if(response.data.loginState === false){
                 window.location.replace("/")
@@ -33,13 +33,13 @@ export default function Dashboard(){
     }, [])
 
     function Logout(){
-        axios.get('/api/signout')
+        axios.get('https://countivityserver.herokuapp.com/signout')
         .then(()=>{
             window.location.replace("/")
         })
     }
     function getUserData(){
-        axios.get('/api/user/data')
+        axios.get('https://countivityserver.herokuapp.com/user/data')
         .then((response)=>{
             setTA(response.data.userData.activities);
             setHours(response.data.userData.hours);
@@ -53,7 +53,7 @@ export default function Dashboard(){
         setAL([])
     }
     function getActivities(){
-        axios.get('/api/activities')
+        axios.get('https://countivityserver.herokuapp.com/activities')
         .then((response)=>{
             const randomArray = [];
             for (var i = 0; i<3; i++){
@@ -68,7 +68,7 @@ export default function Dashboard(){
         })
     }
     function clearActivity(name){
-        axios.get(`/api/add/${name}`)
+        axios.get(`https://countivityserver.herokuapp.com/add/${name}`)
         .then(()=>{
             getUserData();
             getActivities();
